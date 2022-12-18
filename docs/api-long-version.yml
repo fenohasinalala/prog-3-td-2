@@ -13,6 +13,17 @@ paths:
         - Matchs
       summary: get all Matchs
       operationId: getMatchs
+      parameters:
+        - name: page
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/Page'
+        - name: page_size
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/PageSize'
       responses:
         '200':
           description: List of Matchs
@@ -109,6 +120,17 @@ paths:
         - Teams
       summary: get all Teams
       operationId: getTeams
+      parameters:
+        - name: page
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/Page'
+        - name: page_size
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/PageSize'
       responses:
         '200':
           description: List of Teams
@@ -205,6 +227,17 @@ paths:
         - Players
       summary: get all Players
       operationId: getPlayers
+      parameters:
+        - name: page
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/Page'
+        - name: page_size
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/PageSize'
       responses:
         '200':
           description: List of Players
@@ -220,6 +253,7 @@ paths:
           description: Bad request
         '404':
           description: Ressource not found
+    
     post:
       tags:
         - Players
@@ -295,12 +329,44 @@ paths:
           description: Bad request
         '404':
           description: Ressource not found
+  /teams/{teamId}/players:
+    get:
+      tags:
+        - Players
+      summary: get Players by team's id
+      operationId: getPlayersByteamId
+      responses:
+        '200':
+          description: List of Players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
   /sponsors:
     get:
       tags:
         - Sponsors
       summary: get all Sponsors
       operationId: getSponsors
+      parameters:
+        - name: page
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/Page'
+        - name: page_size
+          required: true
+          in: query
+          schema:
+            $ref: '#/components/schemas/PageSize'
       responses:
         '200':
           description: List of Sponsors
@@ -420,13 +486,17 @@ components:
         type: object
         properties:
           players:
-            type: array
-            items:
-              $ref: '#/components/schemas/Player'
+              type: string
+              example: 
+                - "Cristiano Ronaldo"
+                - "Lionel Messi"
+
+
           sponsors:
             type: array
             items:
-              $ref: '#/components/schemas/Sponsor'
+              type: string
+              example: "Konami"
         allOf:
           - $ref: '#/components/schemas/UpdateTeam'
     UpdateTeam:
@@ -485,3 +555,9 @@ components:
           name:
             type: string
             example: "Konami"
+    Page:
+      type: integer
+      description: Start at `1`
+    PageSize:
+      type: integer
+      description: Cannot exceed `200`

@@ -1,5 +1,6 @@
 package com.hei.prog3td2.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,6 +13,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -24,11 +26,13 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode
 public class Team {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private String id;
     @NotBlank(message = "name is mandatory")
+    @Column(unique=true)
     private String name;
     @OneToMany(mappedBy = "team")
     private List<Player> players;

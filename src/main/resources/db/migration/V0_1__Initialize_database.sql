@@ -16,7 +16,8 @@ create table if not exists player
 (
 	id			varchar
 		constraint player_pk primary key default uuid_generate_v4(),
-	name		varchar		not null,
+	name		varchar		not null
+	    constraint player_name_unique unique,
 	number		integer,
 	team_id		varchar		not null
 		constraint player_team_id_fk references team(id)
