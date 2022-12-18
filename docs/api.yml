@@ -1,0 +1,170 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/fenohasinalala/PROG3_TD2/1.0.0
+info:
+  version: "latest"
+  title: PROG3 - TD2
+paths:
+  /matchs:
+    get:
+      tags:
+        - Matchs
+      summary: get all Matchs
+      operationId: getMatchs
+      responses:
+        '200':
+          description: List of Matchs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    
+  /teams:
+    get:
+      tags:
+        - Teams
+      summary: get all Teams
+      operationId: getTeams
+      responses:
+        '200':
+          description: List of Teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    
+  /players:
+    get:
+      tags:
+        - Players
+      summary: get all Players
+      operationId: getPlayers
+      responses:
+        '200':
+          description: List of Players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    
+  
+components:
+  schemas:
+    Match:
+      allOf:
+        - $ref: '#/components/schemas/UpdateMatch'
+    UpdateMatch:
+      allOf:
+        - $ref: '#/components/schemas/CreateMatch'
+      properties:
+        id:
+          type: string
+          example: "3ac889d1-4c30-4ba1-a412-4d6820687eae"
+    CreateMatch:
+      type: object
+      properties:
+        team1:
+          type: string
+          example: "Barcelone"
+        team2:
+          type: string
+          example: "Real Madrid"
+        datetime:
+          type: string
+          format: date-time
+
+    Team:
+        type: object
+        properties:
+          players:
+            type: array
+            items:
+              $ref: '#/components/schemas/Player'
+          sponsors:
+            type: array
+            items:
+              $ref: '#/components/schemas/Sponsor'
+        allOf:
+          - $ref: '#/components/schemas/UpdateTeam'
+    UpdateTeam:
+        allOf:
+          - $ref: '#/components/schemas/CreateTeam'
+        properties:
+          id:
+            type: string
+            example: "762df2d7-dd6c-48db-b60f-4eda630d6de8"
+    CreateTeam:
+        type: object
+        properties:
+          name:
+            type: string
+            example: "Barcelone"
+
+    Player:
+        type: object
+        properties:
+          id:
+            type: string
+            example: "b8ebf813-1f9c-4058-b0e5-b37e8850c62d"
+          name:
+            type: string
+            example: "Lionel Messi"
+    UpdatePlayer:
+        allOf:
+          - $ref: '#/components/schemas/CreatePlayer'
+        properties:
+          id:
+            type: string
+            example: "8720b27e-b32d-4581-a0ae-65d59d309118"
+    CreatePlayer:
+        type: object
+        properties:
+          name:
+            type: string
+            example: "Lionel Messi"
+          team:
+            allOf:
+              - $ref: '#/components/schemas/UpdateTeam'
+    Sponsor:
+      type: object
+      allOf:
+          - $ref: '#/components/schemas/UpdateSponsor'
+    UpdateSponsor:
+        allOf:
+          - $ref: '#/components/schemas/CreateSponsor'
+        properties:
+          id:
+            type: string
+            example: "762df2d7-dd6c-48db-b60f-4eda630d6de8"
+    CreateSponsor:
+        type: object
+        properties:
+          name:
+            type: string
+            example: "Konami"

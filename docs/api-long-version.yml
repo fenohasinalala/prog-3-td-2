@@ -1,0 +1,487 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/fenohasinalala/PROG3_TD2/1.0.0
+info:
+  version: "latest"
+  title: PROG3 - TD2
+paths:
+  /matchs:
+    get:
+      tags:
+        - Matchs
+      summary: get all Matchs
+      operationId: getMatchs
+      responses:
+        '200':
+          description: List of Matchs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    post:
+      tags:
+        - Matchs
+      summary: create new Matchs
+      operationId: createMatchs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMatch'
+      responses:
+        '200':
+          description: List of created Matchs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    put:
+      tags:
+        - Matchs
+      summary: update some Matchs
+      operationId: updateMatchs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMatch'
+      responses:
+        '200':
+          description: List of updated Matchs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /matchs/{matchId}:
+    delete:
+      tags:
+        - Matchs
+      summary: delete a specific Match
+      operationId: deleteMatch
+      parameters:
+        - in: path
+          name: matchId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted Match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /teams:
+    get:
+      tags:
+        - Teams
+      summary: get all Teams
+      operationId: getTeams
+      responses:
+        '200':
+          description: List of Teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    post:
+      tags:
+        - Teams
+      summary: create new Teams
+      operationId: createTeams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeam'
+      responses:
+        '200':
+          description: List of created Teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    put:
+      tags:
+        - Teams
+      summary: update some Teams
+      operationId: updateTeams
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeam'
+      responses:
+        '200':
+          description: List of updated Teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /teams/{teamId}:
+    delete:
+      tags:
+        - Teams
+      summary: delete a specific Team
+      operationId: deleteTeam
+      parameters:
+        - in: path
+          name: teamId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted Team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /players:
+    get:
+      tags:
+        - Players
+      summary: get all Players
+      operationId: getPlayers
+      responses:
+        '200':
+          description: List of Players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    post:
+      tags:
+        - Players
+      summary: create new Players
+      operationId: createPlayers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlayer'
+      responses:
+        '200':
+          description: List of created Players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    put:
+      tags:
+        - Players
+      summary: update some Players
+      operationId: updatePlayers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlayer'
+      responses:
+        '200':
+          description: List of updated Players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /players/{playerId}:
+    delete:
+      tags:
+        - Players
+      summary: delete a specific Player
+      operationId: deletePlayer
+      parameters:
+        - in: path
+          name: playerId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted Player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /sponsors:
+    get:
+      tags:
+        - Sponsors
+      summary: get all Sponsors
+      operationId: getSponsors
+      responses:
+        '200':
+          description: List of Sponsors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    post:
+      tags:
+        - Sponsors
+      summary: create new Sponsors
+      operationId: createSponsors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSponsor'
+      responses:
+        '200':
+          description: List of created Sponsors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+    put:
+      tags:
+        - Sponsors
+      summary: update some Sponsors
+      operationId: updateSponsors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSponsor'
+      responses:
+        '200':
+          description: List of updated Sponsors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+  /sponsors/{sponsorId}:
+    delete:
+      tags:
+        - Sponsors
+      summary: delete a specific Sponsor
+      operationId: deleteSponsor
+      parameters:
+        - in: path
+          name: sponsorId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted Sponsor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+        '400':
+          description: Bad request
+        '404':
+          description: Ressource not found
+components:
+  schemas:
+    Match:
+      allOf:
+        - $ref: '#/components/schemas/UpdateMatch'
+    UpdateMatch:
+      allOf:
+        - $ref: '#/components/schemas/CreateMatch'
+      properties:
+        id:
+          type: string
+          example: "3ac889d1-4c30-4ba1-a412-4d6820687eae"
+    CreateMatch:
+      type: object
+      properties:
+        team1:
+          type: string
+          example: "Barcelone"
+        team2:
+          type: string
+          example: "Real Madrid"
+        datetime:
+          type: string
+          format: date-time
+
+    Team:
+        type: object
+        properties:
+          players:
+            type: array
+            items:
+              $ref: '#/components/schemas/Player'
+          sponsors:
+            type: array
+            items:
+              $ref: '#/components/schemas/Sponsor'
+        allOf:
+          - $ref: '#/components/schemas/UpdateTeam'
+    UpdateTeam:
+        allOf:
+          - $ref: '#/components/schemas/CreateTeam'
+        properties:
+          id:
+            type: string
+            example: "762df2d7-dd6c-48db-b60f-4eda630d6de8"
+    CreateTeam:
+        type: object
+        properties:
+          name:
+            type: string
+            example: "Barcelone"
+
+    Player:
+        type: object
+        properties:
+          id:
+            type: string
+            example: "b8ebf813-1f9c-4058-b0e5-b37e8850c62d"
+          name:
+            type: string
+            example: "Lionel Messi"
+    UpdatePlayer:
+        allOf:
+          - $ref: '#/components/schemas/CreatePlayer'
+        properties:
+          id:
+            type: string
+            example: "8720b27e-b32d-4581-a0ae-65d59d309118"
+    CreatePlayer:
+        type: object
+        properties:
+          name:
+            type: string
+            example: "Lionel Messi"
+          team:
+            allOf:
+              - $ref: '#/components/schemas/UpdateTeam'
+    Sponsor:
+      type: object
+      allOf:
+          - $ref: '#/components/schemas/UpdateSponsor'
+    UpdateSponsor:
+        allOf:
+          - $ref: '#/components/schemas/CreateSponsor'
+        properties:
+          id:
+            type: string
+            example: "762df2d7-dd6c-48db-b60f-4eda630d6de8"
+    CreateSponsor:
+        type: object
+        properties:
+          name:
+            type: string
+            example: "Konami"
