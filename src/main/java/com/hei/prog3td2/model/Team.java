@@ -34,7 +34,7 @@ public class Team {
     private List<Player> players;
     @ManyToMany
     @JoinTable(name = "sponsors_teams",
-            joinColumns = @JoinColumn(name = "team_id",referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "team_id",referencedColumnName = "id",nullable = false),
             inverseJoinColumns = @JoinColumn(name = "sponsor_id", referencedColumnName = "id"))
     private List<Sponsor> sponsors;
 }
