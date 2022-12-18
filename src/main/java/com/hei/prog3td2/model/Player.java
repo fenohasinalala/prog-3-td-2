@@ -4,37 +4,33 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "team")
+@Table(name = "player")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Team {
+public class Player {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private String id;
     @NotBlank(message = "name is mandatory")
     private String name;
-    @OneToMany(mappedBy = "team")
-    private List<Player> players;
-    @ManyToMany
-    @JoinTable(name = "sponsors_teams",
-            joinColumns = @JoinColumn(name = "team_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "sponsor_id", referencedColumnName = "id"))
-    private List<Sponsor> sponsors;
+    private Integer number;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    @NotNull(message = "team is mandatory")
+    private Team team;
 }
