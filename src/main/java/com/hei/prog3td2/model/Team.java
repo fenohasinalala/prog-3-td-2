@@ -1,5 +1,6 @@
 package com.hei.prog3td2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,7 @@ public class Team {
     @Column(unique=true)
     private String name;
     @OneToMany(mappedBy = "team")
+    @JsonIgnore
     private List<Player> players;
     @ManyToMany
     @JoinTable(name = "sponsors_teams",
