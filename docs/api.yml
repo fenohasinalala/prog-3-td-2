@@ -157,17 +157,13 @@ components:
         type: object
         properties:
           players:
-              type: string
-              example: 
-                - "Cristiano Ronaldo"
-                - "Lionel Messi"
-
-
+            type: array
+            items:
+              $ref: '#/components/schemas/Player'
           sponsors:
             type: array
             items:
-              type: string
-              example: "Konami"
+              $ref: '#/components/schemas/Sponsor'
         allOf:
           - $ref: '#/components/schemas/UpdateTeam'
     UpdateTeam:

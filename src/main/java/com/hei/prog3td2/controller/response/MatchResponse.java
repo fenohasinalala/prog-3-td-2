@@ -14,6 +14,6 @@ import lombok.Setter;
 public class MatchResponse {
     private String id;
     private String datetime;
-    private String team1;
-    private String team2;
+    private TeamResponse team1;
+    private TeamResponse team2;
 }
