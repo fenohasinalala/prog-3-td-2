@@ -131,8 +131,23 @@ paths:
 components:
   schemas:
     Match:
-      allOf:
-        - $ref: '#/components/schemas/UpdateMatch'
+      type: object
+      properties:
+        id:
+          type: string
+          example: "3ac889d1-4c30-4ba1-a412-4d6820687eae"
+        datetime:
+          type: string
+          format: date-time
+        team1:
+          type: array
+          items:
+              $ref: '#/components/schemas/Team'
+        team2:
+          type: array
+          items:
+              $ref: '#/components/schemas/Team'
+        
     UpdateMatch:
       allOf:
         - $ref: '#/components/schemas/CreateMatch'
