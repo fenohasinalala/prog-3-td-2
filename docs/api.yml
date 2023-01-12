@@ -71,7 +71,7 @@ paths:
         '400':
           description: Bad request
         '404':
-          description: Ressource not found
+          description: Resource not found
     
   /players:
     get:
@@ -130,6 +130,38 @@ paths:
   
 components:
   schemas:
+    Score:
+        type: object
+        properties:
+          id:
+            type: string
+            example: "b8ebf813-1f9c-4058-b0e5-b37e8850c62d"
+          team1_scores:
+            type: integer
+            example: 1
+          team2_scores:
+            type: integer
+            example: 1
+          goals:
+            type: array
+            items:
+              $ref: '#/components/schemas/Goal'        
+    
+    Goal:
+        type: object
+        properties:
+          id:
+            type: string
+            example: "b8ebf813-1f9c-4058-b0e5-b37e8850c62d"
+          Player:
+            $ref: '#/components/schemas/Player' 
+          isOwnGoal:
+            type: boolean
+            example: false
+          minute:
+            type: integer
+            example: 65
+    
     Match:
       type: object
       properties:
@@ -147,6 +179,8 @@ components:
           type: array
           items:
               $ref: '#/components/schemas/Team'
+        score:
+          $ref: '#/components/schemas/Score'
         
     UpdateMatch:
       allOf:
