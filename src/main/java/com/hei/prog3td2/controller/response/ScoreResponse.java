@@ -6,15 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
-public class MatchResponse {
-    private String id;
-    private String datetime;
-    private TeamResponse team1;
-    private TeamResponse team2;
-    private ScoreResponse score;
+public class ScoreResponse {
+    private int team1_score;
+    private int team2_score;
+    private List<GoalResponse> team1_scorers;
+    private List<GoalResponse> team2_scorers;
 }

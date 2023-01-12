@@ -11,7 +11,7 @@ values('player001','Lionel Messi',10,'teamId001');
 insert into player(id,name,number,team_id)
 values('player002','Cristiano Ronaldo',7,'teamId002');
 insert into player(id,name,number,team_id)
-values('player003','Zlatan Ibrahimovic',9,'teamId001');
+values('player003','Zlatan Ibrahimovic',9,'teamId003');
 
 
 insert into play_against(id,datetime,stadium,team_1_id,team_2_id)

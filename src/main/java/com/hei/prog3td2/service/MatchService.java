@@ -1,6 +1,7 @@
 package com.hei.prog3td2.service;
 
 import com.hei.prog3td2.exception.BadRequestException;
+import com.hei.prog3td2.exception.NotFoundException;
 import com.hei.prog3td2.model.Match;
 import com.hei.prog3td2.repository.PlayAgainstRepository;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,9 @@ public class MatchService {
         Pageable pageable = PageRequest.of(page - 1,pageSize,
                 Sort.by(ASC,"datetime"));
         return repository.findAll(pageable).toList();
+    }
+
+    public Match getMatchById(String id){
+        return repository.findById(id).orElseThrow(()->new NotFoundException("Match with id "+id+" does not exists"));
     }
 }

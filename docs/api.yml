@@ -133,19 +133,20 @@ components:
     Score:
         type: object
         properties:
-          id:
-            type: string
-            example: "b8ebf813-1f9c-4058-b0e5-b37e8850c62d"
-          team1_scores:
+          team1_score:
             type: integer
             example: 1
-          team2_scores:
+          team2_score:
             type: integer
             example: 1
-          goals:
+          team1_scorers:
             type: array
             items:
-              $ref: '#/components/schemas/Goal'        
+              $ref: '#/components/schemas/Goal'   
+          team2_scorers:
+            type: array
+            items:
+              $ref: '#/components/schemas/Goal'       
     
     Goal:
         type: object

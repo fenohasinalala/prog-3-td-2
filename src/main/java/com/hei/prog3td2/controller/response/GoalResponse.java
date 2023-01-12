@@ -11,10 +11,9 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class MatchResponse {
+public class GoalResponse {
     private String id;
-    private String datetime;
-    private TeamResponse team1;
-    private TeamResponse team2;
-    private ScoreResponse score;
+    private int minute;
+    private PlayerResponse player;
+    private Boolean isOnGoal;
 }
