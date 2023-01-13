@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -48,11 +49,11 @@ public class Match {
     public int getTeam1Score() {
         int team1Score = 0;
         for (Score goal : scores) {
-            if (goal.getPlayer().getTeam().getId() == team1.getId()) {
+            if (Objects.equals(goal.getPlayer().getTeam().getId(), team1.getId()) && !goal.getPlayer().isGoalKeeper()) {
                 if (!goal.isOwnGoal()) {
                     team1Score += 1;
                 } ;
-            } else if (goal.getPlayer().getTeam().getId() == team2.getId()) {
+            } else if (Objects.equals(goal.getPlayer().getTeam().getId(), team2.getId()) && !goal.getPlayer().isGoalKeeper()) {
                 if (goal.isOwnGoal()) {
                     team1Score += 1;
                 }
@@ -65,12 +66,12 @@ public class Match {
     public int getTeam2Score() {
         int team2Score = 0;
         for (Score goal : scores) {
-            if (goal.getPlayer().getTeam().getId() == team1.getId()) {
+            if (Objects.equals(goal.getPlayer().getTeam().getId(), team1.getId()) && !goal.getPlayer().isGoalKeeper()) {
 
                 if (!goal.isOwnGoal()) {
 
                 } else team2Score += 1;
-            } else if (goal.getPlayer().getTeam().getId() == team2.getId()) {
+            } else if (Objects.equals(goal.getPlayer().getTeam().getId(), team2.getId()) && !goal.getPlayer().isGoalKeeper()) {
 
                 if (!goal.isOwnGoal()) {
                     team2Score += 1;
@@ -84,11 +85,11 @@ public class Match {
     public List<Score> getTeam1Scorers() {
         List<Score> team1_scorers = new ArrayList<>();
         for (Score goal : scores) {
-            if (goal.getPlayer().getTeam().getId() == team1.getId()) {
+            if (Objects.equals(goal.getPlayer().getTeam().getId(), team1.getId()) && !goal.getPlayer().isGoalKeeper()) {
                 if (!goal.isOwnGoal()) {
                     team1_scorers.add(goal);
                 }
-            } else if (goal.getPlayer().getTeam().getId() == team2.getId()) {
+            } else if (Objects.equals(goal.getPlayer().getTeam().getId(), team2.getId()) && !goal.getPlayer().isGoalKeeper()) {
                 if (goal.isOwnGoal()) {
                     team1_scorers.add(goal);
                 }
@@ -101,11 +102,11 @@ public class Match {
     public List<Score> getTeam2Scorers() {
         List<Score> team2_scorers = new ArrayList<>();
         for (Score goal : scores) {
-            if (goal.getPlayer().getTeam().getId() == team2.getId()) {
+            if (Objects.equals(goal.getPlayer().getTeam().getId(), team2.getId()) && !goal.getPlayer().isGoalKeeper()) {
                 if (!goal.isOwnGoal()) {
                     team2_scorers.add(goal);
                 }
-            }else if (goal.getPlayer().getTeam().getId() == team1.getId()) {
+            }else if (Objects.equals(goal.getPlayer().getTeam().getId(), team1.getId()) && !goal.getPlayer().isGoalKeeper()) {
                 if (goal.isOwnGoal()) {
                     team2_scorers.add(goal);
                 }

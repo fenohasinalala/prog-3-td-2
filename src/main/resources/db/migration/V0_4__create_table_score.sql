@@ -12,10 +12,3 @@ create table if not exists "score"
     player_id              varchar                  not null
         constraint score_player_id_fk references "player"(id)
 );
-
-insert into score(id,minute,is_own_goal,match_id,player_id)
-values('score003',90,false,'match001','player001');
-insert into score(id,minute,is_own_goal,match_id,player_id)
-values('score001',65,false,'match003','player003');
-insert into score(id,minute,is_own_goal,match_id,player_id)
-values('score002',90,true,'match003','player002');
