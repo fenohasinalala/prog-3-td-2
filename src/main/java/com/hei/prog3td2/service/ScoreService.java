@@ -1,7 +1,6 @@
 package com.hei.prog3td2.service;
 
-import com.hei.prog3td2.controller.mapper.GoalMapper;
-import com.hei.prog3td2.controller.response.MatchResponse;
+import com.hei.prog3td2.controller.mapper.ScorerMapper;
 import com.hei.prog3td2.controller.response.ScoreResponse;
 import com.hei.prog3td2.model.Match;
 import com.hei.prog3td2.model.Score;
@@ -18,7 +17,7 @@ import java.util.List;
 public class ScoreService {
     private final ScoreRepository repository;
     private final MatchService matchService;
-    private final GoalMapper goalMapper;
+    private final ScorerMapper scorerMapper;
     private final PlayerRepository playerRepository;
     public List<Score> getGoalsByMatchId(String id) {
         Match match = matchService.getMatchById(id);
@@ -53,8 +52,8 @@ public class ScoreService {
         return ScoreResponse.builder()
                 .team1_score(team1Score)
                 .team2_score(team2Score)
-                .team1_scorers(team1_scorers.stream().map(goalMapper::toRest).toList())
-                .team2_scorers(team2_scorers.stream().map(goalMapper::toRest).toList())
+                .team1_scorers(team1_scorers.stream().map(scorerMapper::toRest).toList())
+                .team2_scorers(team2_scorers.stream().map(scorerMapper::toRest).toList())
                 .build();
     }
 }

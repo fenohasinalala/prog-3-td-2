@@ -16,6 +16,6 @@ import java.util.List;
 public class ScoreResponse {
     private int team1_score;
     private int team2_score;
-    private List<GoalResponse> team1_scorers;
-    private List<GoalResponse> team2_scorers;
+    private List<ScorerResponse> team1_scorers;
+    private List<ScorerResponse> team2_scorers;
 }

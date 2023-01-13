@@ -11,7 +11,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class GoalResponse {
+public class ScorerResponse {
     private String id;
     private int minute;
     private PlayerResponse player;

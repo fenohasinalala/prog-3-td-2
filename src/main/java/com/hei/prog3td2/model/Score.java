@@ -30,8 +30,8 @@ public class Score {
     @GeneratedValue(strategy = IDENTITY)
     private String id;
 
-    @Min(0)
-    @Max(90)
+    @Min(value = 0,message = "minute of score must be positive")
+    @Max(value = 90,message = "minute of score must be less than 90")
     private int minute;
     @Column(columnDefinition = "boolean default false")
     private boolean isOwnGoal;
@@ -43,4 +43,6 @@ public class Score {
     @JoinColumn(name = "player_id")
     @NotNull(message = "player is mandatory")
     private Player player;
+
+
 }
